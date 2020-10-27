@@ -1,4 +1,4 @@
-package com.moringa.geofood.Services;
+package com.moringa.geofood;
 
 import com.moringa.geofood.Constants;
 
