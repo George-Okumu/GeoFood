@@ -1,5 +1,6 @@
 package com.moringa.geofood.ui;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.moringa.geofood.R;
 
 import butterknife.BindView;
@@ -24,6 +26,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @BindView(R.id.recipeEditText) EditText mRecipeEditText;
     @BindView(R.id.searchButton) Button mSearchButton;
 
+    private FirebaseAuth mFirebaseAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +36,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         ButterKnife.bind(this);
         mSearchButton.setOnClickListener(this);
+
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if(user != null){
+                    getSupportActionBar().setTitle(user.getDisplayName()+ "Welcome to GeoFood where you can find the best Recipe of your chosen food type");
+                }
+            }
+        };
 
 
     }
@@ -69,5 +85,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         takeMeToLogInAfterLogOut.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(takeMeToLogInAfterLogOut);
         finish();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mFirebaseAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mAuthListener != null) {
+            mFirebaseAuth.removeAuthStateListener(mAuthListener);
+        }
     }
 }
