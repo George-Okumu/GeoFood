@@ -1,4 +1,4 @@
-package com.moringa.geofood;
+package com.moringa.geofood.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.moringa.geofood.R;
+import com.moringa.geofood.Recipe;
 import com.moringa.geofood.services.EdamamService;
 
 import java.io.IOException;
