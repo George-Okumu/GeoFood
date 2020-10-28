@@ -1,16 +1,24 @@
 package com.moringa.geofood.ui;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.moringa.geofood.R;
+
+import java.util.concurrent.BlockingDeque;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -54,7 +62,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
-    public void loginWithPassword(){
+    private void loginWithPassword(){
         String userEmail = mEmailEditText.getText().toString().trim();
         String userPassword = mPasswordEditText.getText().toString().trim();
 
@@ -67,6 +75,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if(userPassword.equals(" ")){
             mPasswordEditText.setError("Password Cannot be blank");
         }
+
+        mLoginAuth.signInWithEmailAndPassword(userEmail, userPassword).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                Log.d(TAG, "Sign With Email :onComplete:" + task.isSuccessful());
+
+                if(!task.isSuccessful()){
+                    Log.e(TAG, "onComplete: Sign InWith Email Failed", task.getException());
+                    Toast.makeText(LoginActivity.this, "Error Occured:Try giving correct details", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
 }
