@@ -1,7 +1,7 @@
 package com.moringa.geofood.services;
 
 import com.moringa.geofood.Constants;
-import com.moringa.geofood.Recipe;
+import com.moringa.geofood.models.Recipe;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -19,7 +19,7 @@ import okhttp3.Response;
 
 public class EdamamService {
 
-    public static void findRecipes(String query, Callback callback){
+    public void findRecipes(String query, Callback callback){
         OkHttpClient client = new OkHttpClient.Builder()
                 .build();
 

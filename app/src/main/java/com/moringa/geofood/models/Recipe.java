@@ -1,4 +1,4 @@
-package com.moringa.geofood;
+package com.moringa.geofood.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

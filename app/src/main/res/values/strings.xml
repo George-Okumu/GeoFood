@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">GeoFood</string>
     <string name="logout">Logout</string>
+    <string name="current_cuisines">current cuisines</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nutritional_info">Nutritional info:</string>
+    <string name="calories">Calories:</string>
+    <string name="recipeUrl">Click here For the full Recipe!</string>
 </resources>
