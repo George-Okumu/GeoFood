@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if(user != null){
-                    getSupportActionBar().setTitle(user.getDisplayName()+ "Welcome to GeoFood where you can find the best Recipe of your chosen food type");
+                    getSupportActionBar().setTitle(user.getDisplayName()+ " Welcome to GeoFood.");
                 }
             }
         };

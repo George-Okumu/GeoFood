@@ -63,7 +63,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
     private void createAuthProgressDialog() {
         mAuthProgressDialog = new ProgressDialog(this);
         mAuthProgressDialog.setTitle("Loading, Please wait.........");
-        mAuthProgressDialog.setMessage("Authenticating with Firebase...");
+        mAuthProgressDialog.setMessage("Connecting...");
         mAuthProgressDialog.setCancelable(false);
     }
 
