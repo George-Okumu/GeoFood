@@ -100,7 +100,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         //if user email is empty
         if(userEmail.equals(" ")){
-            mEmailEditText.setError("Please Enter your email");
+            mEmailEditText.setError("Please Enter correct email");
             return;
         }
 
