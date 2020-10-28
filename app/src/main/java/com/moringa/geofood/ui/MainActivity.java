@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent intent = new Intent(MainActivity.this, RecipeDetailActivity.class);
             intent.putExtra("recipe", recipe);
             startActivity(intent);
-            Toast.makeText(MainActivity.this, "Welcome!", Toast.LENGTH_LONG).show();
         }
     }
 
