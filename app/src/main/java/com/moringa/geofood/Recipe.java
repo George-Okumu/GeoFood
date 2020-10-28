@@ -7,58 +7,69 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Recipe {
-    private String uri;
-    private String label;
+
+//    private String uri;
+//
+//    private String label;
+//    private String image;
+//    private String source;
+//    private String url;
+//    private String shareAs;
+//    private String yield;
+//    private List<Object> dietLabels = new ArrayList<>();
+//    private List<String> healthLabels = new ArrayList<>();
+//    private List<String> cautions = new ArrayList<>();
+//    private List<String> ingredientLines = new ArrayList<>();
+//    private List<String> ingredients = new ArrayList<>();
+//    private String calories;
+//    private Double totalWeight;
+//
+//    private String pushId;
+//    private String index;
+//
+//    //Empty constructor for serialisation
+//    public Recipe(){
+//
+//    }
+//
+//    public Recipe(String label, String image, String url, Double yield, ArrayList<String> ingredientLines, Double calories) {
+//        this.label = label;
+//        this.image = image;
+//        this.url = url;
+//        this.yield = yield;
+//        this.ingredientLines = ingredientLines;
+//        this.calories = calories;
+//    }
+    private String title;
     private String image;
-    private String source;
     private String url;
-    private String shareAs;
-    private Double yield;
-    private List<Object> dietLabels = new ArrayList<>();
-    private List<String> healthLabels = new ArrayList<>();
-    private List<String> cautions = new ArrayList<>();
     private List<String> ingredientLines = new ArrayList<>();
-    private List<String> ingredients = new ArrayList<>();
-    private Double calories;
-    private Double totalWeight;
-    private Double totalTime;
-//    private TotalNutrients totalNutrients;
-//    private TotalDaily totalDaily;
-    private List<String> digest = new ArrayList<>();
+    private String calories;
+    private String servings;
+    private String cuisine;
+    private String pushId;
+    private String index;
 
-    public Recipe(String uri, String label, String image, String source, String url, String shareAs, Double yield, List<Object> dietLabels, List<String> healthLabels, List<String> cautions, List<String> ingredientLines, List<String> ingredients, Double calories, Double totalWeight, Double totalTime, List<String> digest) {
-        this.uri = uri;
-        this.label = label;
+
+    //Default Constructor
+    public Recipe(){}
+
+    public Recipe(String title, String image, String url, ArrayList<String> ingredientLines, String calories, String servings) {
+        this.title = title;
         this.image = image;
-        this.source = source;
         this.url = url;
-        this.shareAs = shareAs;
-        this.yield = yield;
-        this.dietLabels = dietLabels;
-        this.healthLabels = healthLabels;
-        this.cautions = cautions;
         this.ingredientLines = ingredientLines;
-        this.ingredients = ingredients;
         this.calories = calories;
-        this.totalWeight = totalWeight;
-        this.totalTime = totalTime;
-        this.digest = digest;
+        this.servings = servings;
+        this.index = "not_specified";
     }
 
-    public String getUri() {
-        return uri;
+    public String getTitle() {
+        return title;
     }
 
-    public void setUri(String uri) {
-        this.uri = uri;
-    }
-
-    public String getLabel() {
-        return label;
-    }
-
-    public void setLabel(String label) {
-        this.label = label;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getImage() {
@@ -69,60 +80,12 @@ public class Recipe {
         this.image = image;
     }
 
-    public String getSource() {
-        return source;
-    }
-
-    public void setSource(String source) {
-        this.source = source;
-    }
-
     public String getUrl() {
         return url;
     }
 
     public void setUrl(String url) {
         this.url = url;
-    }
-
-    public String getShareAs() {
-        return shareAs;
-    }
-
-    public void setShareAs(String shareAs) {
-        this.shareAs = shareAs;
-    }
-
-    public Double getYield() {
-        return yield;
-    }
-
-    public void setYield(Double yield) {
-        this.yield = yield;
-    }
-
-    public List<Object> getDietLabels() {
-        return dietLabels;
-    }
-
-    public void setDietLabels(List<Object> dietLabels) {
-        this.dietLabels = dietLabels;
-    }
-
-    public List<String> getHealthLabels() {
-        return healthLabels;
-    }
-
-    public void setHealthLabels(List<String> healthLabels) {
-        this.healthLabels = healthLabels;
-    }
-
-    public List<String> getCautions() {
-        return cautions;
-    }
-
-    public void setCautions(List<String> cautions) {
-        this.cautions = cautions;
     }
 
     public List<String> getIngredientLines() {
@@ -133,43 +96,35 @@ public class Recipe {
         this.ingredientLines = ingredientLines;
     }
 
-    public List<String> getIngredients() {
-        return ingredients;
-    }
-
-    public void setIngredients(List<String> ingredients) {
-        this.ingredients = ingredients;
-    }
-
-    public Double getCalories() {
+    public String getCalories() {
         return calories;
     }
 
-    public void setCalories(Double calories) {
+    public void setCalories(String calories) {
         this.calories = calories;
     }
 
-    public Double getTotalWeight() {
-        return totalWeight;
+    public String getServings() {
+        return servings;
     }
 
-    public void setTotalWeight(Double totalWeight) {
-        this.totalWeight = totalWeight;
+    public void setServings(String servings) {
+        this.servings = servings;
     }
 
-    public Double getTotalTime() {
-        return totalTime;
+    public String getCuisine() {
+        return cuisine;
     }
 
-    public void setTotalTime(Double totalTime) {
-        this.totalTime = totalTime;
+    public void setCuisine(String cuisine) {
+        this.cuisine = cuisine;
     }
 
-    public List<String> getDigest() {
-        return digest;
+    public String getPushId() {
+        return pushId;
     }
 
-    public void setDigest(List<String> digest) {
-        this.digest = digest;
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
     }
 }

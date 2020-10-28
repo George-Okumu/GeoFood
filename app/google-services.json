@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "567551149176",
+    "firebase_url": "https://geofood-25422.firebaseio.com",
+    "project_id": "geofood-25422",
+    "storage_bucket": "geofood-25422.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:567551149176:android:6175f893382db23969d98d",
+        "android_client_info": {
+          "package_name": "com.moringa.geofood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "567551149176-ldqbguj50l4cf8m99e2ktstjtj4fcthf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.moringa.geofood",
+            "certificate_hash": "7d5c33a10ed2f57327ff7194c7f80a4a7a0ce14d"
+          }
+        },
+        {
+          "client_id": "567551149176-6c2fkirgmcl3jtql79caaj08331ersgs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdUU1ySw7YXBvx4v0p6u9ndq-biS9a-Hw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "567551149176-6c2fkirgmcl3jtql79caaj08331ersgs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
