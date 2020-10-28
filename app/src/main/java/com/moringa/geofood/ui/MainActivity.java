@@ -66,5 +66,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void logout() {
         FirebaseAuth.getInstance().signOut();
+        Intent takeMeToLogInAfterLogOut = new Intent(MainActivity.this, LoginActivity.class);
+        takeMeToLogInAfterLogOut.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(takeMeToLogInAfterLogOut);
+        finish();
     }
 }
