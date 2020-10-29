@@ -7,4 +7,9 @@
     <string name="nutritional_info">Nutritional info:</string>
     <string name="calories">Calories:</string>
     <string name="recipeUrl">Click here For the full Recipe!</string>
+    <string name="see_the_recipe_button">See the Recipe!</string>
+    <string name="search_edamam_first">Search Edamam Api</string>
+    <string name="about_text2">"GeoFood gets people together to enjoy good food. Cook for your family, your friends, a stranger? Enjoy the process, the discipline, the art, and learn something new! Then eat up, enjoy, and do it all over!"</string>
+    <string name="recipeName">Recipe Name:</string>
+    <string name="recipeImgDesc">Complete Recipe</string>
 </resources>

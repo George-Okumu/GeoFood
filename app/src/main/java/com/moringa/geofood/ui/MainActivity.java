@@ -2,6 +2,7 @@ package com.moringa.geofood.ui;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @BindView(R.id.recipeEditText) EditText mRecipeEditText;
     @BindView(R.id.searchButton) Button mSearchButton;
 
+
     private FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
@@ -35,7 +38,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
-        mSearchButton.setOnClickListener(this);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -48,18 +50,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         };
 
+        mSearchButton.setOnClickListener(this);
+
 
     }
 
     @Override
     public void onClick(View v) {
         if(v == mSearchButton){
-            String recipe =mRecipeEditText.getText().toString();
-
             Intent intent = new Intent(MainActivity.this, RecipeDetailActivity.class);
-            intent.putExtra("recipe", recipe);
             startActivity(intent);
         }
+
+
+
     }
 
     @Override

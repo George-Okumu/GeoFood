@@ -1,101 +1,28 @@
 package com.moringa.geofood.adapters;
 
 import android.content.Context;
-import android.content.Intent;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.ArrayAdapter;
 
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.annotation.NonNull;
 
-import com.moringa.geofood.Constants;
-import com.moringa.geofood.R;
-import com.moringa.geofood.models.Recipe;
-import com.moringa.geofood.ui.RecipeDetailActivity;
-import com.squareup.picasso.Picasso;
-
-import org.parceler.Parcels;
-
-import java.util.List;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
-public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.ViewHolder >{
-
-    private static final int MAX_WIDTH = 200;
-    private static final int MAX_HEIGHT = 200;
-    private List<Recipe> mRecipes;
+public class RecipeListAdapter extends ArrayAdapter {
     private Context mContext;
+    private String[] mRecipe;
 
-    public RecipeListAdapter(Context context, List<Recipe> recipes) {
-        mRecipes = recipes;
-        mContext = context;
-    }
-
-
-    @Override
-    public RecipeListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Context context = parent.getContext();
-        LayoutInflater inflater = LayoutInflater.from(context);
-        View recipeView = inflater.inflate(R.layout.activity_recipe_list, parent, false);
-        ViewHolder viewHolder = new ViewHolder(recipeView);
-        return viewHolder;
+    public RecipeListAdapter(@NonNull Context mContext, int resource, String[] mRecipe) {
+        super(mContext, resource);
+        this.mContext = mContext;
+        this.mRecipe = mRecipe;
     }
 
     @Override
-    public void onBindViewHolder(RecipeListAdapter.ViewHolder viewHolder, int position) {
-        Recipe recipe = mRecipes.get(position);
-        TextView textView1 = viewHolder.mRecipeNameTextView;
-//        ImageView imageView = viewHolder.mRecipeImageView;
-        textView1.setText(recipe.getTitle());
-        viewHolder.bindRecipe(mRecipes.get(position));
-
+    public Object getItem(int position) {
+        String geofood = mRecipe[position];
+        return String.format("%s \nHere is the list of:", geofood);
     }
 
     @Override
-    public int getItemCount() {
-        return mRecipes.size();
+    public int getCount() {
+        return mRecipe.length;
     }
-
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        @BindView(R.id.recipeImageView) ImageView mRecipeImageView;
-        @BindView(R.id.recipeNameTextView) TextView mRecipeNameTextView;
-        private Context mContext;
-
-
-
-        public ViewHolder(View itemView) {
-            super(itemView);
-            ButterKnife.bind(this, itemView);
-            mContext = itemView.getContext();
-            itemView.setOnClickListener(this);
-        }
-
-
-        @Override
-        public void onClick(View v) {
-            int itemPosition = getLayoutPosition();
-            Intent intent = new Intent(mContext, RecipeDetailActivity.class);
-            intent.putExtra(Constants.EXTRA_KEY_POSITION, itemPosition);
-            intent.putExtra(Constants.EXTRA_KEY_RECIPES, Parcels.wrap(mRecipes));
-            mContext.startActivity(intent);
-        }
-
-
-        public void bindRecipe(Recipe recipe) {
-            Picasso.get()
-                    .load(recipe.getImage())
-                    .resize(MAX_WIDTH, MAX_HEIGHT)
-                    .centerCrop()
-                    .into(mRecipeImageView);
-            mRecipeNameTextView.setText(recipe.getTitle());
-        }
-
-
-
-    }
-
 }
