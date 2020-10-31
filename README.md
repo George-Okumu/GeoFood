@@ -12,7 +12,7 @@
   ![demo.jpg](app/src/main/res/drawable/demo.jpg)
 
   ## Live Demo
-  ![demogfood.gif](app/src/main/res/drawable/demo.gif)
+  ![demogfood.gif](app/src/main/res/drawable/demogfood.gif)
 
 
   ## Feauture MVP
