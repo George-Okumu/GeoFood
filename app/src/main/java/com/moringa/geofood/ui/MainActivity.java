@@ -25,7 +25,6 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
 
-    @BindView(R.id.recipeEditText) EditText mRecipeEditText;
     @BindView(R.id.searchButton) Button mSearchButton;
 
 

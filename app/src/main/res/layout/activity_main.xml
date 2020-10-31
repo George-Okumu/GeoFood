@@ -17,16 +17,6 @@
         android:layout_marginTop="35dp"
         android:textColor="@color/colorTextIcons" />
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/recipeEditText"
-            android:background="@color/colorTextIcons"
-            android:layout_above="@+id/searchButton"
-            android:layout_marginBottom="10dp"
-            android:padding="5dp"
-            android:hint="Enter Recipe type"
-            android:layout_centerHorizontal="true" />
 
 
         <Button
@@ -36,7 +26,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:background="@color/colorAccent"
-            android:text="Find your favorite recipe"
+            android:text="Click to know your recipe"
             android:textColor="@color/colorTextIcons" />
 
 </RelativeLayout>

@@ -1,6 +1,8 @@
 package com.moringa.geofood.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +12,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.moringa.geofood.adapters.RecipeListAdapter;
 import com.moringa.geofood.model.Meal;
 import com.moringa.geofood.network.MealApi;
 import com.moringa.geofood.network.MealClient;
@@ -31,8 +34,10 @@ public class RecipeDetailActivity extends AppCompatActivity {
     @BindView(R.id.errorTextView) TextView mErrorTextView;
     @BindView(R.id.progressBar) ProgressBar mProgressBar;
 
-    @BindView(R.id.recipeTextView) TextView mRecipeTextView;
-    @BindView(R.id.listView) ListView mListView;
+    @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
+    private RecipeListAdapter mAdapter;
+
+    public List<Meal> meals;
 
 
     @Override
@@ -63,9 +68,13 @@ public class RecipeDetailActivity extends AppCompatActivity {
                     for(int i = 0; i <instructions.length; i++){
                         instructions[i] = meals.get(i).getStrInstructions();
 
-                        ArrayAdapter adapter = new ArrayAdapter(RecipeDetailActivity.this, android.R.layout.simple_list_item_1, instructions);
-                        mListView.setAdapter(adapter);
-                        Log.d(TAG, "onResponse: " + adapter);
+                        mAdapter = new RecipeListAdapter(RecipeDetailActivity.this, meals);
+                        mRecyclerView.setAdapter(mAdapter);
+
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(RecipeDetailActivity.this);
+                        mRecyclerView.setLayoutManager(layoutManager);
+                        mRecyclerView.setHasFixedSize(true);
+                        Log.d(TAG, "onResponse: " + mAdapter);
 
                         showRecipe();
                     }
@@ -94,8 +103,8 @@ public class RecipeDetailActivity extends AppCompatActivity {
         mErrorTextView.setVisibility(View.VISIBLE);
     }
     private void showRecipe() {
-        mListView.setVisibility(View.VISIBLE);
-        mRecipeTextView.setVisibility(View.VISIBLE);
+        mRecyclerView.setVisibility(View.VISIBLE);
+
     }
 
     private void hideProgressBar() {

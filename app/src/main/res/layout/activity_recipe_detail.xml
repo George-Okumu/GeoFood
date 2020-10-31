@@ -8,6 +8,7 @@
     tools:context=".ui.RecipeDetailActivity">
 
 
+
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
@@ -26,14 +27,15 @@
         android:layout_centerHorizontal="true"
         android:visibility="gone"/>
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/listView"
-        android:layout_below="@+id/recipeTextView"
-        android:layout_alignParentRight="true"
+        android:layout_below="@id/recipeTextView"
         android:layout_alignParentEnd="true"
-        android:visibility="gone"/>
+        android:layout_marginTop="16dp"
+        android:visibility="gone" />
+
 
     <TextView
         android:id="@+id/errorTextView"
