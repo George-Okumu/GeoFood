@@ -8,11 +8,11 @@
   - Enjoy the nice view of meal picture and instructions
   - Link to youtube.
 
+    ## Live Demo
+    ![demogfood.gif](app/src/main/res/drawable/demogfood.gif)
+
   ## Look out of the App
   ![demo.jpg](app/src/main/res/drawable/demo.jpg)
-
-  ## Live Demo
-  ![demogfood.gif](app/src/main/res/drawable/demogfood.gif)
 
 
   ## Feauture MVP
