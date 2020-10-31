@@ -9,7 +9,10 @@
   - Link to youtube.
 
   ## Look out of the App
-  ![demo-1.jpg](app/src/main/res/drawable/demo-1.jpg)
+  ![demo.jpg](app/src/main/res/drawable/demo.jpg)
+
+  ## Live Demo
+  ![demogfood.gif](app/src/main/res/drawable/demo.gif)
 
 
   ## Feauture MVP
