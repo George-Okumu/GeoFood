@@ -11,8 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GeoFood">
-        <activity android:name=".ui.RecipeDetailActivity"></activity>
-        <activity android:name=".ui.EdamamSearchActivity" />
+        <activity android:name=".ui.RecipeDetail02Activity"></activity>
+        <activity android:name=".ui.RecipeDetailActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.moringa.geofood.ui.MainActivity"></meta-data>
+        </activity>
         <activity
             android:name=".ui.LoginActivity"
             android:theme="@style/NoActionBarTheme">
