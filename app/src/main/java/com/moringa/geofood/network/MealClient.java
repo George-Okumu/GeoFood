@@ -1,4 +1,7 @@
-package com.moringa.geofood;
+package com.moringa.geofood.network;
+
+import com.moringa.geofood.Constants;
+import com.moringa.geofood.network.MealApi;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;

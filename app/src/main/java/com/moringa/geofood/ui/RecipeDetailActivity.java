@@ -2,7 +2,6 @@ package com.moringa.geofood.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,12 +10,11 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.moringa.geofood.Meal;
-import com.moringa.geofood.MealApi;
-import com.moringa.geofood.MealClient;
-import com.moringa.geofood.MealDB;
+import com.moringa.geofood.model.Meal;
+import com.moringa.geofood.network.MealApi;
+import com.moringa.geofood.network.MealClient;
+import com.moringa.geofood.model.MealDB;
 import com.moringa.geofood.R;
-import com.moringa.geofood.adapters.RecipeListAdapter;
 
 import java.util.List;
 

@@ -1,4 +1,6 @@
-package com.moringa.geofood;
+package com.moringa.geofood.network;
+
+import com.moringa.geofood.model.MealDB;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
