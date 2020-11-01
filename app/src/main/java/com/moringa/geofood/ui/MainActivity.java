@@ -38,11 +38,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        mRecipesFoundReference = FirebaseDatabase
-                .getInstance()
-                .getReference()
-                .child(Constants.FIREBASE_CHILD_RECIPESFOUND);
+//
+//        mRecipesFoundReference = FirebaseDatabase
+//                .getInstance()
+//                .getReference()
+//                .child(Constants.FIREBASE_CHILD_RECIPESFOUND);
 
 
         super.onCreate(savedInstanceState);
@@ -69,19 +69,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if(v == mSearchButton){
-            String recipe = mRecipeEditText.getText().toString();
-
-            saveRecipeToFirebase(recipe);
 
             Intent intent = new Intent(MainActivity.this, RecipeDetailActivity.class);
             startActivity(intent);
         }
     }
 
-
-    public void saveRecipeToFirebase(String recipe){
-        mRecipesFoundReference.push().setValue(recipe);
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
