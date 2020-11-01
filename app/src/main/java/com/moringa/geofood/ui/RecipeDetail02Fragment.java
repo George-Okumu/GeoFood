@@ -43,7 +43,7 @@ public class RecipeDetail02Fragment extends Fragment implements  View.OnClickLis
  @BindView(R.id.categoryTextView) TextView mCategoryTextView;
  @BindView(R.id.youtubeLink) TextView mYoutubeLink;
  @BindView(R.id.instructionsTextView) TextView mInstructionsTextView;
- @BindView(R.id.saveRecipeButton) Button mSaveRecipeButton;
+ @BindView(R.id.savedRecipeButton) Button mSavedRecipeButton;
 
 
     // TODO: Rename and change types of parameters
@@ -90,7 +90,8 @@ public class RecipeDetail02Fragment extends Fragment implements  View.OnClickLis
         mYoutubeLink.setText(mStrMeal.getStrYoutube());
         mInstructionsTextView.setText(mStrMeal.getStrInstructions());
 
-        mSaveRecipeButton.setOnClickListener(this);
+        mYoutubeLink.setOnClickListener(this);
+        mSavedRecipeButton.setOnClickListener(this);
 
         return view;
 
@@ -98,17 +99,19 @@ public class RecipeDetail02Fragment extends Fragment implements  View.OnClickLis
 
     @Override
     public void onClick(View v) {
+
+        if(v == mSavedRecipeButton){
+            DatabaseReference recipeRef = FirebaseDatabase
+                    .getInstance()
+                    .getReference(Constants.FIREBASE_CHILD_RECIPES);
+            recipeRef.push().setValue(mStrMeal);
+
+            Toast.makeText(getContext(), "Saved successfully", Toast.LENGTH_SHORT).show();
+        }
         if(v == mYoutubeLink){
             Intent youtubeIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(mStrMeal.getStrYoutube()));
             startActivity(youtubeIntent);
 
-         if(v == mSaveRecipeButton){
-             DatabaseReference databaseReference = FirebaseDatabase
-                     .getInstance()
-                     .getReference(Constants.FIREBASE_CHILD_RECIPES);
-             databaseReference.push().setValue(mStrMeal);
-             Toast.makeText(getContext(), "saved successfully", Toast.LENGTH_SHORT).show();;
-         }
         }
     }
 }

@@ -47,7 +47,7 @@
 
   ## Maintainers
   - This project is maintained by George Okumu.
-  - [For communication: Click me] (gokumu12@gmail.com)
+  - [For communication:] (gokumu12@gmail.com)
 
   ## Contributing
   - contributing for feature mvp and new ideas are highly welcomed

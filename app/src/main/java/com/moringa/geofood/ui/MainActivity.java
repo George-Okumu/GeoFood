@@ -17,6 +17,9 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.moringa.geofood.Constants;
 import com.moringa.geofood.R;
 
 import butterknife.BindView;
@@ -24,8 +27,10 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private DatabaseReference mRecipesFoundReference;
 
     @BindView(R.id.searchButton) Button mSearchButton;
+    @BindView(R.id.recipeEditText) EditText mRecipeEditText;
 
 
     private FirebaseAuth mFirebaseAuth;
@@ -33,6 +38,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        mRecipesFoundReference = FirebaseDatabase
+                .getInstance()
+                .getReference()
+                .child(Constants.FIREBASE_CHILD_RECIPESFOUND);
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -57,12 +69,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if(v == mSearchButton){
+            String recipe = mRecipeEditText.getText().toString();
+
+            saveRecipeToFirebase(recipe);
+
             Intent intent = new Intent(MainActivity.this, RecipeDetailActivity.class);
             startActivity(intent);
         }
+    }
 
 
-
+    public void saveRecipeToFirebase(String recipe){
+        mRecipesFoundReference.push().setValue(recipe);
     }
 
     @Override
