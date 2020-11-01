@@ -32,6 +32,7 @@
   - MealDB random Meal API
   - Java Language
   - Firebase (Realtime database to store user credentials and saving data)
+  - [Link on how to setup your Firebase](https://firebase.google.com/docs/android/setup)
   - Espresso 3.2.0 for testing
   - Robolectric 4.2.1 for testing
   - JUnit 4.12
@@ -46,11 +47,13 @@
 
   ## Maintainers
   - This project is maintained by George Okumu.
-  - For Contribution: gokumu12@gmail.com
+  - [For communication: Click me] (gokumu12@gmail.com)
 
   ## Contributing
+  - contributing for feature mvp and new ideas are highly welcomed
   - Git clone
-  - Work and request for git merge.
+  - Set the instructions/technologies required
+  - Work and request for git merge .
 
 
   ## License

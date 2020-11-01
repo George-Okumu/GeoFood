@@ -13,7 +13,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.moringa.geofood.Constants;
 import com.moringa.geofood.R;
 import com.moringa.geofood.model.Meal;
 import com.squareup.picasso.Picasso;
@@ -86,6 +90,8 @@ public class RecipeDetail02Fragment extends Fragment implements  View.OnClickLis
         mYoutubeLink.setText(mStrMeal.getStrYoutube());
         mInstructionsTextView.setText(mStrMeal.getStrInstructions());
 
+        mSaveRecipeButton.setOnClickListener(this);
+
         return view;
 
     }
@@ -95,6 +101,14 @@ public class RecipeDetail02Fragment extends Fragment implements  View.OnClickLis
         if(v == mYoutubeLink){
             Intent youtubeIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(mStrMeal.getStrYoutube()));
             startActivity(youtubeIntent);
+
+         if(v == mSaveRecipeButton){
+             DatabaseReference databaseReference = FirebaseDatabase
+                     .getInstance()
+                     .getReference(Constants.FIREBASE_CHILD_RECIPES);
+             databaseReference.push().setValue(mStrMeal);
+             Toast.makeText(getContext(), "saved successfully", Toast.LENGTH_SHORT).show();;
+         }
         }
     }
 }
