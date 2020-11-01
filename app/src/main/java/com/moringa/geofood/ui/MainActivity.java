@@ -30,7 +30,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private DatabaseReference mRecipesFoundReference;
 
     @BindView(R.id.searchButton) Button mSearchButton;
-    @BindView(R.id.recipeEditText) EditText mRecipeEditText;
+    @BindView(R.id.savedRecipesButton) Button mSavedRecipes;
+
 
 
     private FirebaseAuth mFirebaseAuth;
@@ -38,13 +39,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-//
-//        mRecipesFoundReference = FirebaseDatabase
-//                .getInstance()
-//                .getReference()
-//                .child(Constants.FIREBASE_CHILD_RECIPESFOUND);
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -61,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         };
 
+        mSavedRecipes.setOnClickListener(this);
         mSearchButton.setOnClickListener(this);
 
 
@@ -72,6 +67,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             Intent intent = new Intent(MainActivity.this, RecipeDetailActivity.class);
             startActivity(intent);
+        }
+
+        if(v == mSavedRecipes){
+            Intent intent = new Intent(MainActivity.this, SavedRecipeListActivity.class);
         }
     }
 
