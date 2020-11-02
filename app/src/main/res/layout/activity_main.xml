@@ -12,10 +12,23 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
         android:textSize="50sp"
+            android:id="@+id/welcomeTextView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="35dp"
         android:textColor="@color/colorTextIcons" />
+
+
+        <TextView
+            android:text="Delicious Food is what brings the family together,which brings love.In Geo Food, you find the best of recipes to make your meal delicious"
+            android:layout_width="match_parent"
+            android:layout_below="@id/welcomeTextView"
+            android:layout_height="match_parent"
+            android:textSize="20sp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="225dp"
+            android:textColor="@color/colorTextIcons" />
 
         <Button
             android:layout_width="match_parent"
@@ -27,6 +40,7 @@
             android:textColor="@color/colorTextIcons"
             android:visibility="visible"
             android:layout_alignParentBottom="true"
+            android:layout_marginBottom="60dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"/>
 
@@ -39,7 +53,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:background="@color/colorAccent"
-            android:text="Click to know your recipe"
+            android:text="Click to Get your recipe"
             android:textColor="@color/colorTextIcons" />
 
 </RelativeLayout>

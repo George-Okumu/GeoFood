@@ -9,7 +9,7 @@
   - Link to youtube.
 
     ## Live Demo
-    ![demogfood.gif](app/src/main/res/drawable/demogfood.gif)
+    ![demogeo.gif](app/src/main/res/drawable/demogeo.gif)
 
   ## Look out of the App
   ![demo.jpg](app/src/main/res/drawable/demo.jpg)
