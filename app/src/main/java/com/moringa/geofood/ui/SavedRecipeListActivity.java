@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,7 +13,6 @@ import android.view.ViewGroup;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -22,7 +20,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.moringa.geofood.Constants;
 import com.moringa.geofood.R;
 import com.moringa.geofood.adapters.FirebaseRecipeViewHolder;
-import com.moringa.geofood.adapters.savedAdapter;
 import com.moringa.geofood.model.Meal;
 
 import butterknife.BindView;
@@ -44,7 +41,14 @@ public class SavedRecipeListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_saved_recipe);
         ButterKnife.bind(this);
 
-        mRecipeReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_RECIPES);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+
+        mRecipeReference = FirebaseDatabase
+                .getInstance()
+                .getReference(Constants.FIREBASE_CHILD_RECIPES)
+                .child(uid);
+
         setUpFirebaseAdapter();
     }
 
@@ -65,7 +69,7 @@ public class SavedRecipeListActivity extends AppCompatActivity {
             public FirebaseRecipeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.saved_recipe, parent, false);
-                Log.d(TAG, "onCreateViewHolder: Error Biiiiiiiiiiig one");
+                Log.d(TAG, "onCreateViewHolder: Error  on create view");
 
                 return new FirebaseRecipeViewHolder(view);
             }
