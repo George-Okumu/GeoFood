@@ -159,6 +159,8 @@ public class Meal {
     @SerializedName("strSource")
     @Expose
     private String strSource;
+
+    private String pushId;
 //    @SerializedName("dateModified")
 //    @Expose
 //    private Object dateModified;
@@ -927,6 +929,14 @@ public class Meal {
     public Meal withStrSource(String strSource) {
         this.strSource = strSource;
         return this;
+    }
+
+    public String getPushId() {
+        return pushId;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
     }
 
 //    public Object getDateModified() {

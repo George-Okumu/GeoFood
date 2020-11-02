@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.moringa.geofood.Constants;
@@ -101,10 +103,22 @@ public class RecipeDetail02Fragment extends Fragment implements  View.OnClickLis
     public void onClick(View v) {
 
         if(v == mSavedRecipeButton){
+            FirebaseUser user = FirebaseAuth
+                    .getInstance()
+                    .getCurrentUser();
+            String uid = user.getUid();
+
+
             DatabaseReference recipeRef = FirebaseDatabase
                     .getInstance()
-                    .getReference(Constants.FIREBASE_CHILD_RECIPES);
-            recipeRef.push().setValue(mStrMeal);
+                    .getReference(Constants.FIREBASE_CHILD_RECIPES)
+                    .child(uid);
+
+            DatabaseReference pushRef = recipeRef.push();
+            String savedId = pushRef.getKey();//Collecting pushId and assgining new variable
+            mStrMeal.setPushId(savedId);
+            pushRef.setValue(mStrMeal);//Setting the value to the save recipe value in a specified node
+
 
             Toast.makeText(getContext(), "Saved successfully", Toast.LENGTH_SHORT).show();
         }
