@@ -3,6 +3,7 @@ package com.moringa.geofood.ui;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.ObjectAnimator;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -82,6 +83,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
+        flipIt(v);
         if(v == mRegisterTextView){
             Intent register = new Intent(LoginActivity.this, CreateAccountActivity.class);
             startActivity(register);
@@ -92,6 +94,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             loginWithPassword();
         }
 
+    }
+    private void flipIt(final View viewToFlip) {
+        ObjectAnimator flip = ObjectAnimator.ofFloat(viewToFlip, "rotationX", 0f, 360f);
+        flip.setDuration(200);
+        flip.start();
     }
 
     private void loginWithPassword(){

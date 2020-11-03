@@ -1,5 +1,6 @@
 package com.moringa.geofood.ui;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -101,6 +102,7 @@ public class RecipeDetail02Fragment extends Fragment implements  View.OnClickLis
 
     @Override
     public void onClick(View v) {
+        flipIt(v);
 
         if(v == mSavedRecipeButton){
             FirebaseUser user = FirebaseAuth
@@ -127,5 +129,11 @@ public class RecipeDetail02Fragment extends Fragment implements  View.OnClickLis
             startActivity(youtubeIntent);
 
         }
+    }
+
+    private void flipIt(final View viewToFlip) {
+        ObjectAnimator flip = ObjectAnimator.ofFloat(viewToFlip, "rotationX", 2.0f, 360f);
+        flip.setDuration(2000);
+        flip.start();
     }
 }

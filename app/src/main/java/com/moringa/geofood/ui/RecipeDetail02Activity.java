@@ -6,6 +6,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
+import com.moringa.geofood.Constants;
 import com.moringa.geofood.R;
 import com.moringa.geofood.adapters.RecipePagerAdapter;
 import com.moringa.geofood.model.Meal;
@@ -28,8 +29,8 @@ public class RecipeDetail02Activity extends AppCompatActivity {
         setContentView(R.layout.activity_recipe_detail02);
         ButterKnife.bind(this);
 
-        mMeals = Parcels.unwrap(getIntent().getParcelableExtra("meals"));
-        int startingPosition = getIntent()  .getIntExtra("position", 0);
+        mMeals = Parcels.unwrap(getIntent().getParcelableExtra(Constants.EXTRA_KEY_RECIPES));
+        int startingPosition = getIntent()  .getIntExtra(Constants.EXTRA_KEY_POSITION, 0);
 
         adapterViewPage = new RecipePagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, mMeals);
         mViewPager.setAdapter(adapterViewPage);

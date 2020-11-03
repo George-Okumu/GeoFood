@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,13 +14,18 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.moringa.geofood.Constants;
 import com.moringa.geofood.adapters.RecipeListAdapter;
 import com.moringa.geofood.model.Meal;
 import com.moringa.geofood.network.MealApi;
 import com.moringa.geofood.network.MealClient;
 import com.moringa.geofood.model.MealDB;
 import com.moringa.geofood.R;
+import com.moringa.geofood.util.OnRecipeSelectedListener;
 
+import org.parceler.Parcels;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -27,9 +34,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class RecipeDetailActivity extends AppCompatActivity {
+public class RecipeDetailActivity extends AppCompatActivity  implements OnRecipeSelectedListener {
 
     private static final String TAG = "";
+
+    String mSource;
+    private Integer mPosition;
 
     @BindView(R.id.errorTextView) TextView mErrorTextView;
     @BindView(R.id.progressBar) ProgressBar mProgressBar;
@@ -37,7 +47,7 @@ public class RecipeDetailActivity extends AppCompatActivity {
     @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
     private RecipeListAdapter mAdapter;
 
-    public List<Meal> meals;
+    public List<Meal> mMeals;
 
 
     @Override
@@ -45,6 +55,20 @@ public class RecipeDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_detail);
         ButterKnife.bind(this);
+
+        if(savedInstanceState != null){
+            if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+                mSource = savedInstanceState.getString(Constants.KEY_SOURCE);
+
+                if(mPosition != null ){
+                    Intent intent = new Intent(this, RecipeDetail02Activity.class);
+                    intent.putExtra(Constants.EXTRA_KEY_POSITION, mPosition);
+                    intent.putExtra(Constants.EXTRA_KEY_RECIPES, Parcels.wrap(mMeals));
+                    startActivity(intent);
+                }
+
+            }
+        }
 
 
         MealApi client = MealClient.getClient();
@@ -94,6 +118,21 @@ public class RecipeDetailActivity extends AppCompatActivity {
 
     }
 
+//    @Override
+//    protected void onSaveInstanceState(Bundle outState) {
+//        ...
+//        if (mPosition != null && mRestaurants != null) {
+//            ...
+//            outState.putString(Constants.KEY_SOURCE, mSource);
+//        }
+//    }
+//
+//    @Override
+//    public void onRestaurantSelected(Integer position, ArrayList<Restaurant> restaurants, String source) {
+//        ...
+//        mSource = source;
+//    }
+
     private void showFailureMessage() {
         mErrorTextView.setText("Something went wrong. Please check your Internet connection and try again!");
         mErrorTextView.setVisibility(View.VISIBLE);
@@ -109,5 +148,12 @@ public class RecipeDetailActivity extends AppCompatActivity {
 
     private void hideProgressBar() {
         mProgressBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onRecipeSelected(Integer position, ArrayList<Meal> meals, String source) {
+
+        mPosition = position;
+        mMeals = meals;
     }
 }
